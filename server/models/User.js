@@ -1,47 +1,24 @@
 const mongoose = require("mongoose");
 
-// User Schema
 const userSchema = new mongoose.Schema(
   {
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    phone: {
-      type: String,
-      required: true,
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    cart: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Cart", // Reference to Cart model
-    },
-    orders: [
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    address: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Order", // Reference to Order model
+        street: { type: String, required: true },
+        city: { type: String, required: true },
+        zip_code: { type: String, required: true },
       },
     ],
+    contact_number: { type: String, required: true },
+    transaction_ids: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Transaction" },
+    ],
   },
-  { collection: "users" } // Specifies the collection name
+  { collection: "users" }
 );
 
-// Creating the User model
 const User = mongoose.model("User", userSchema);
-
 module.exports = User;
