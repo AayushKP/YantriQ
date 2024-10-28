@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #000000;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 10s linear infinite;
+}
+
+/* Add this to your global CSS file */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom styles for Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #670505;         /* Change icon color to white */
+  width: 10px;          /* Adjust icon width */
+  height: 10px;         /* Adjust icon height */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 10px;      /* Decrease font size for smaller icon appearance */
+}
